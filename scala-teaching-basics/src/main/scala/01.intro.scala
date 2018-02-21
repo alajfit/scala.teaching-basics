@@ -107,7 +107,8 @@ object Test {
     // lazy val is only evaluated when it is used
     // This can be handy for things such as file uploads
     lazy val randomNum = random.nextInt(100)
-    println(s"A random number $randomNum") 
+    println(s"A random number $randomNum")
+    // lazy can only be applied to a val
 
     println("\n\n")
   }
