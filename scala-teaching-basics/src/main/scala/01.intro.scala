@@ -12,7 +12,9 @@ object Test {
   // This string array can be used for things such as config or runtime variables
   def main(args: Array[String]) {
 
+    // *********************************
     // ********* SIMPLE OUTPUT *********
+    // *********************************
 
     // println allows us to print statements to the console
     // Also Scala does not require semicolons just line breaks
@@ -21,7 +23,9 @@ object Test {
     // Important note Predef.scala is the equivilent of java.lang package
     // All are available to all scala files without an import
 
+    // *****************************
     // ********* VARIABLES *********
+    // *****************************
 
     // Val in Scala is an immutable variable
     // final can also be used in a parent class to prevent value overrides
@@ -33,7 +37,10 @@ object Test {
     println(s"A rounded pie is $PI, and your real age is ${age + 1}")
     // You can also prepend a string with f to format a string and raw to prevent escaping of literals
 
+
+    // ******************************
     // ********* DATA TYPES *********
+    // ******************************
 
     // Scala has the same data types as Java and the same memory usage and precision
     // All data types in Scala are objects and methods can be called on them
@@ -55,6 +62,68 @@ object Test {
     // This is part of the Scala lang and prevents null pointer examples
     // The only place variables don't need assigned values is in an Abstract Class
 
+
+    // ************************************
+    // ********* TYPE ANNOTATIONS *********
+    // ************************************
+
+    // In scala we can explicity define types
+    val z : Integer = 20
+    println(s"Explicit types $z")
+
+    // Type annotations after the declaration
+    val k = 50.01 : Double
+    println(s"Types can be annotated after the declartion and is sometimes preferred $k")
+
+    // Type annotations are not necessary in all JVM languages
+    // But they are very important in apps like APIs to stop client confusion
+    def getDataFromBackend() = List {
+      val dataList = List(1, "Literature", 2, "Science")
+      dataList
+    }
+    // In this exmaple we can see type annotations in function definitions and variables
+    println(getDataFromBackend())
+
+
+    // ************************************
+    // ********* TYPE ASCRIPTIONS *********
+    // ************************************
+
+    // Type ascriptions tell the compiler what type we expect from an operation
+    // There is no difference in syntax between type annotations and type ascriptions
+    // Generally type ascriptions are used for up-casting
+    val r = "Alan"
+
+    val g = r : Object
+    println(g)
+
+
+    // ****************************
+    // ********* LAZY VAL *********
+    // ****************************
+
+    val random = scala.util.Random
+
+    // lazy val is only evaluated when it is used
+    // This can be handy for things such as file uploads
+    lazy val randomNum = random.nextInt(100)
+    println(s"A random number $randomNum") 
+
     println("\n\n")
   }
+}
+
+// Example of reading a file from the file system
+
+import scala.io.Source._
+
+object ReadFile extends App {
+  println("\n\nIn the APP")
+
+  println(System.getProperty("user.dir"))
+
+  lazy val users = fromFile(System.getProperty("user.dir") + "/other/file1.txt").getLines
+  println(users)
+
+  println("\n\n") 
 }
