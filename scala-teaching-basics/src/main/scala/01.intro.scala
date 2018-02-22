@@ -110,6 +110,59 @@ object Test {
     println(s"A random number $randomNum")
     // lazy can only be applied to a val
 
+
+    // ****************************
+    // ********* ARRAY ************
+    // ****************************
+
+    // Think of an array in scala fixed-size sequential collection of elements of the same type
+    val za: Array[String] = new Array[String](3)
+    za(0) = "Alan"
+    za(1) = "Jack"
+    za(2) = "Fitzpatrick"
+    println(s"Full name ${za(0)} ${za(1)} ${za(2)}")
+
+    val zy = Array("Alan", "John", "Fitzpatrick")
+    println(s"Real Full Name: ${zy(0)} ${zy(1)} ${zy(2)}")
+
+    val xz = Array(0.2, 0.8, 1.5)
+    var total = 0.0
+
+    for( x <- xz) {
+      total += x
+      println(x)
+    }
+    println(total)
+
+    println("Printing a defined number run")
+    for( i <- 1 to (xz.length - 1)) {
+      println(xz(i))
+    }
+
+
+    // **********************************************
+    // ********* MULTI DIMENSIONAL ARRAY ************
+    // **********************************************
+
+    import Array._
+
+    var aMatrix = ofDim[Int](3, 3)
+
+    // Build a matrix
+    for (y <- 0 to 2) {
+      for (x <- 0 to 2) {
+        aMatrix(y)(x) = y + x
+      }
+    }
+
+    // Print a Matrix
+    for (y <- 0 to 2) {
+      for (x <- 0 to 2) {
+        print(" " + aMatrix(y)(x))
+      }
+      println()
+    }
+
     println("\n\n")
   }
 }
